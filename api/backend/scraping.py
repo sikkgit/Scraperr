@@ -100,7 +100,6 @@ async def make_site_request(
         LOG.info(f"Visiting URL: {url}")
         driver.get(url)
         final_url = driver.current_url
-        LOG.info(f"Final URL: {final_url}")
         visited_urls.add(url)
         visited_urls.add(final_url)
         _ = WebDriverWait(driver, 10).until(
@@ -120,7 +119,6 @@ async def make_site_request(
 
     for a_tag in soup.find_all("a"):
         link = a_tag.get("href")
-        LOG.info(f"Found Link: {link}")
 
         if link:
             if not urlparse(link).netloc:
